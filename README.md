@@ -10,4 +10,4 @@ Usage: Strafe needs to be assigned to 1 and evasive fire to right mouse. Hit 1, 
 
 If you want to cancel an evasive fire loop do a left click.
 
-Turn script off via insert key.
+You can disable the script via insert key.
