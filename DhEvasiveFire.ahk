@@ -21,6 +21,7 @@ CoordMode, Mouse, Screen ;make MouseMove exact not only when on desktop
 ;                           __/ |
 ;                          |___/
 
+StrafeKey = 1
 EvasFireMacroTriggerKey = a
 StopMacroTriggerKey = LButton
 EvasFireDelay := 570
@@ -34,11 +35,13 @@ Center.X := A_ScreenWidth/2
 Center.Y := A_ScreenHeight /2  * 0.935185 ;don't use the exact half because char stands slightly above that
 Pi := 3.14159265358979323846
 IsRequestedStop := 0
+IsHeldStrafeKey := 0
 
 
 #IfWinActive, Diablo III
 
 
+Hotkey, $%StrafeKey%, StrafeLabel
 Hotkey, ~%StopMacroTriggerKey%, StopLabel
 Hotkey, %EvasFireMacroTriggerKey%, EvasiveFireLabel
 return
@@ -58,7 +61,25 @@ return
   }
 
   return
-; --== ==--a
+; --== ==--
+
+
+; --== Stop ==--
+StrafeLabel:
+  if IsHeldStrafeKey
+  {
+    Send {%StrafeKey% up}
+  }
+  else
+  {
+    Send {%StrafeKey% down}
+  }
+  
+  IsHeldStrafeKey := !IsHeldStrafeKey
+  
+  return
+
+; --== ==--
 
 
 ; --== Stop ==--
@@ -94,7 +115,7 @@ EvasiveFireLabel:
 
     Sleep, EvasFireDelay
 
-    if IsRequestedStop = 1
+    if IsRequestedStop
     {
       break
     }
@@ -106,8 +127,6 @@ EvasiveFireLabel:
     pPlayerCursor.Y := yPos
 
     MouseClick, Right, pEnemyDirection.X, pEnemyDirection.Y
-    
-    
 
     MouseMove, pPlayerCursor.X, pPlayerCursor.Y
   }
