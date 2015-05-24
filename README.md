@@ -1,4 +1,4 @@
-AutoHotkey for Diablo 3 macros.
+AutoHotkey scripts for Diablo 3 macros.
 
 # DhEvasiveFire
 
