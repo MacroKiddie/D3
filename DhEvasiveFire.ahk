@@ -21,8 +21,8 @@ CoordMode, Mouse, Screen ;make MouseMove exact not only when on desktop
 ;                           __/ |
 ;                          |___/
 
-StrafeKey = 1
-EvasFireMacroTriggerKey = a
+StrafeKey = 1 ;usually one of 1 2 3 4 LButton RButton
+EvasFireKey = RButton
 StopMacroTriggerKey = LButton
 EvasFireDelay := 570
 EvasFireShots := 3
@@ -43,7 +43,7 @@ IsHeldStrafeKey := 0
 
 Hotkey, $%StrafeKey%, StrafeLabel
 Hotkey, ~%StopMacroTriggerKey%, StopLabel
-Hotkey, %EvasFireMacroTriggerKey%, EvasiveFireLabel
+Hotkey, ~$%EvasFireKey%, EvasiveFireLabel
 return
 
 
@@ -78,7 +78,6 @@ StrafeLabel:
   IsHeldStrafeKey := !IsHeldStrafeKey
   
   return
-
 ; --== ==--
 
 
@@ -90,8 +89,7 @@ StopLabel:
 
 
 ; --== Evasive Fire ==--
-EvasiveFireLabel:
-  MouseClick, Right
+EvasiveFireLabel:  
   MouseGetPos, xPos, yPos
 
   pEnemyDirection := {}
@@ -115,7 +113,7 @@ EvasiveFireLabel:
 
     Sleep, EvasFireDelay
 
-    if IsRequestedStop
+    if (IsRequestedStop or !IsHeldStrafeKey)
     {
       break
     }
@@ -125,8 +123,9 @@ EvasiveFireLabel:
     pPlayerCursor := {}
     pPlayerCursor.X := xPos
     pPlayerCursor.Y := yPos
-
-    MouseClick, Right, pEnemyDirection.X, pEnemyDirection.Y
+   
+    MouseMove, pEnemyDirection.X, pEnemyDirection.Y    
+    Send {%EvasFireKey%}   
 
     MouseMove, pPlayerCursor.X, pPlayerCursor.Y
   }
