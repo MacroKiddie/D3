@@ -31,8 +31,8 @@ EvasFireShots := 3
 
 
 Center := {}
-Center.X := A_ScreenWidth/2
-Center.Y := A_ScreenHeight /2  * 0.935185 ;don't use the exact half because char stands slightly above that
+Center.X := A_ScreenWidth / 2
+Center.Y := A_ScreenHeight / 2  * 0.935185 ;don't use the exact half because char stands slightly above that
 Pi := 3.14159265358979323846
 IsRequestedStop := 0
 IsHeldStrafeKey := 0
