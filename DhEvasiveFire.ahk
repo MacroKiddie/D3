@@ -20,12 +20,12 @@ CoordMode, Mouse, Screen ;make MouseMove exact not only when on desktop
 ;  \_____\___/|_| |_|_| |_|\__, |\__,_|_|  \__,_|\__|_|\___/|_| |_|
 ;                           __/ |
 ;                          |___/
-; Change the following as you like
 
+; Change the following as you like:
 StrafeKey = 1 ;1-key
 EvasFireKey = RButton ;right mouse button
 StopMacroTriggerKey = LButton ;left mouse button
-EvasFireDelay := 570 ;these are milliseconds; time between casts of evasive fire
+EvasFireDelay := 570 ;time between casts of evasive fire in milliseconds
 EvasFireShots := 3
 
 ; ///////////////////////////////////////////////////////////////////////////
