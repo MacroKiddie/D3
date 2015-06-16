@@ -21,9 +21,9 @@ CoordMode, Mouse, Screen ;make MouseMove exact not only when on desktop
 ;                           __/ |
 ;                          |___/
 
-StrafeKey = 1 ;usually one of 1 2 3 4 LButton RButton
-EvasFireKey = RButton
-StopMacroTriggerKey = LButton
+StrafeKey = 1 ;1-key
+EvasFireKey = RButton ;right mouse button
+StopMacroTriggerKey = LButton ;left mouse button
 EvasFireDelay := 570
 EvasFireShots := 3
 
